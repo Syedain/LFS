@@ -1,7 +1,10 @@
 import { Link, Outlet } from 'react-router-dom'
 import logo from '../assets/LFS-logo.png'
+import { useCart } from '../features/cart/CartContext.jsx'
 
 function StoreLayout() {
+  const { cartCount } = useCart()
+
   return (
     <div className="store-shell">
       <div className="announcement-bar">
@@ -24,7 +27,7 @@ function StoreLayout() {
         <div className="header-actions">
           <Link className="icon-link" to="/search" aria-label="Search">⌕</Link>
           <Link className="icon-link" to="/account" aria-label="Account">♙</Link>
-          <Link className="bag-link" to="/cart">Bag <span>0</span></Link>
+          <Link className="bag-link" to="/cart">Bag <span>{cartCount}</span></Link>
         </div>
       </header>
 

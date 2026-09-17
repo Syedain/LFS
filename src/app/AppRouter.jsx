@@ -2,6 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import StoreLayout from '../layouts/StoreLayout'
 import PlaceholderPage from '../pages/PlaceholderPage'
 import HomePage from '../pages/HomePage'
+import ShopPage from '../pages/ShopPage'
+import ProductPage from '../pages/ProductPage'
+import CartPage from '../pages/CartPage'
+import CheckoutPage from '../pages/CheckoutPage'
 
 function AppRouter() {
   return (
@@ -12,7 +16,7 @@ function AppRouter() {
 
           <Route
             path="/shop"
-            element={<PlaceholderPage title="Shop" />}
+            element={<ShopPage />}
           />
 
           <Route
@@ -22,17 +26,17 @@ function AppRouter() {
 
           <Route
             path="/product/:slug"
-            element={<PlaceholderPage title="Product Details" />}
+            element={<ProductPage />}
           />
 
           <Route
             path="/cart"
-            element={<PlaceholderPage title="Shopping Cart" />}
+            element={<CartPage />}
           />
 
           <Route
             path="/checkout"
-            element={<PlaceholderPage title="Checkout" />}
+            element={<CheckoutPage />}
           />
 
           <Route
