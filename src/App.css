@@ -188,6 +188,41 @@ a { color: inherit; text-decoration: none; }
 .checkout-total { border-top: 1px solid #d8d0c6; display: flex; font-size: 15px; justify-content: space-between; margin-top: 10px; padding-top: 20px; }
 .checkout-total strong { color: var(--accent); }
 
+/* Login Page */
+.auth-page { min-height: 650px; padding: 100px 24px; }
+.auth-content { margin: 0 auto; max-width: 460px; }
+.auth-content h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(56px, 8vw, 90px); font-weight: 500; letter-spacing: -0.07em; line-height: 0.95; margin: 0; }
+.auth-intro { color: var(--muted); font-size: 15px; line-height: 1.7; margin: 25px 0 35px; }
+.auth-form { display: flex; flex-direction: column; }
+.auth-form label { color: var(--muted); font-size: 11px; letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase; }
+.auth-form input { background: #fcfbf8; border: 1px solid var(--line); font: inherit; margin-bottom: 22px; min-height: 50px; padding: 13px 14px; }
+.auth-form input:focus { border-color: var(--accent); outline: 2px solid rgba(39, 84, 67, 0.16); }
+.auth-button { background: var(--accent); border: 0; color: white; cursor: pointer; font: inherit; font-size: 12px; letter-spacing: 0.08em; margin-top: 8px; padding: 18px; text-transform: uppercase; }
+.auth-button:hover { background: #1b3d30; }
+.auth-switch { color: var(--muted); font-size: 13px; margin-top: 25px; text-align: center; }
+.auth-switch a { color: var(--accent); text-decoration: underline; }
+
+/* Account Page */
+.account-page { padding: 80px clamp(24px, 6vw, 88px) 110px; }
+.account-heading { border-bottom: 1px solid var(--line); margin-bottom: 50px; padding-bottom: 30px; }
+.account-heading h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(56px, 8vw, 100px); font-weight: 500; letter-spacing: -0.07em; line-height: 0.95; margin: 0 0 20px; }
+.account-heading > p:last-child { color: var(--muted); font-size: 15px; margin: 0; }
+.account-layout { display: grid; gap: 70px; grid-template-columns: 220px minmax(0, 650px); margin: 0 auto; max-width: 1050px; }
+.account-menu { align-items: flex-start; display: flex; flex-direction: column; gap: 16px; }
+.account-menu a,
+.account-menu button { background: transparent; border: 0; color: var(--muted); cursor: pointer; font: inherit; font-size: 12px; padding: 0; text-align: left; }
+.account-menu a:hover,
+.account-menu a.active,
+.account-menu button:hover { color: var(--accent); }
+.account-details { display: grid; gap: 20px; }
+.account-card { background: #eee8df; padding: 30px; }
+.account-card h2 { font-family: Fraunces, Georgia, serif; font-size: 30px; font-weight: 500; margin: 0 0 22px; }
+.account-card > p:not(.eyebrow) { color: var(--muted); line-height: 1.7; margin: 0 0 25px; }
+.account-info { border-top: 1px solid #d8d0c6; display: grid; gap: 18px; padding-top: 20px; }
+.account-info div { display: flex; flex-direction: column; gap: 6px; }
+.account-info span { color: var(--muted); font-size: 11px; text-transform: uppercase; }
+.account-info strong { font-size: 14px; font-weight: 500; }
+
 @media (max-width: 900px) {
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
@@ -227,6 +262,9 @@ a { color: inherit; text-decoration: none; }
     .brand-story-content { min-height: 520px; padding: 70px 24px; }
     .product-page { display: flex; flex-direction: column; gap: 42px; padding: 45px 20px 75px; }
     .product-detail-content { max-width: none; }
+    .account-page { padding: 55px 20px 75px; }
+    .account-layout { display: block; }
+    .account-menu { border-bottom: 1px solid var(--line); flex-direction: row; flex-wrap: wrap; gap: 16px 22px; margin-bottom: 35px; padding-bottom: 20px; }
 }
 
 @media (max-width: 560px) {

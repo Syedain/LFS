@@ -6,6 +6,9 @@ import ShopPage from '../pages/ShopPage'
 import ProductPage from '../pages/ProductPage'
 import CartPage from '../pages/CartPage'
 import CheckoutPage from '../pages/CheckoutPage'
+import LoginPage from '../pages/LoginPage'
+import RegisterPage from '../pages/RegisterPage'
+import AccountPage from '../pages/AccountPage'
 
 function AppRouter() {
   return (
@@ -46,17 +49,17 @@ function AppRouter() {
 
           <Route
             path="/login"
-            element={<PlaceholderPage title="Login" />}
+            element={<LoginPage />}
           />
 
           <Route
             path="/register"
-            element={<PlaceholderPage title="Create Account" />}
+            element={<RegisterPage />}
           />
 
           <Route
             path="/account"
-            element={<PlaceholderPage title="My Account" />}
+            element={<AccountPage />}
           />
 
           <Route
