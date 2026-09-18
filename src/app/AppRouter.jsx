@@ -9,6 +9,9 @@ import CheckoutPage from '../pages/CheckoutPage'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import AccountPage from '../pages/AccountPage'
+import WishlistPage from '../pages/WishlistPage'
+import CategorySection from '../components/CategorySection'
+import SearchPage from '../pages/SearchPage'
 
 function AppRouter() {
   return (
@@ -17,6 +20,8 @@ function AppRouter() {
         <Route element={<StoreLayout />}>
           <Route path="/" element={<HomePage />} />
 
+          <Route path="/search" element={<SearchPage />} />
+
           <Route
             path="/shop"
             element={<ShopPage />}
@@ -24,7 +29,7 @@ function AppRouter() {
 
           <Route
             path="/category/:slug"
-            element={<PlaceholderPage title="Category" />}
+            element={<CategorySection />}
           />
 
           <Route
@@ -64,7 +69,7 @@ function AppRouter() {
 
           <Route
             path="/wishlist"
-            element={<PlaceholderPage title="Wishlist" />}
+            element={<WishlistPage />}
           />
 
           <Route

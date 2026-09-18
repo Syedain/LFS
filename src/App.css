@@ -223,6 +223,29 @@ a { color: inherit; text-decoration: none; }
 .account-info span { color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .account-info strong { font-size: 14px; font-weight: 500; }
 
+/* Wishlist Page */
+.wishlist-page { padding: 80px clamp(24px, 6vw, 88px) 110px; }
+.wishlist-heading { align-items: flex-end; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; margin-bottom: 45px; padding-bottom: 28px; }
+.wishlist-heading h1,
+.empty-wishlist h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(50px, 7vw, 86px); font-weight: 500; letter-spacing: -0.06em; line-height: 0.95; margin: 0; }
+.wishlist-heading > p { color: var(--muted); font-size: 13px; }
+.wishlist-button.saved { background: var(--accent); color: white; }
+.empty-wishlist { margin: 0 auto; max-width: 600px; padding: 150px 24px; text-align: center; }
+.empty-wishlist > p:not(.eyebrow) { color: var(--muted); margin: 25px auto 35px; }
+
+/* Search Page */
+.search-page { padding: 80px clamp(24px, 6vw, 88px) 110px; }
+.search-heading { border-bottom: 1px solid var(--line); margin: 0 auto 55px; max-width: 900px; padding-bottom: 35px; }
+.search-heading h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(56px, 8vw, 100px); font-weight: 500; letter-spacing: -0.07em; line-height: 0.95; margin: 0 0 34px; }
+.search-input-label { color: var(--muted); display: block; font-size: 11px; letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase; }
+.search-input { background: #fcfbf8; border: 1px solid var(--line); color: var(--ink); font: inherit; min-height: 55px; padding: 15px 16px; width: 100%; }
+.search-input:focus { border-color: var(--accent); outline: 2px solid rgba(39, 84, 67, 0.16); }
+.search-message { color: var(--muted); margin: 0 auto; max-width: 900px; }
+.search-empty { margin: 100px auto; max-width: 500px; text-align: center; }
+.search-empty h2 { font-family: Fraunces, Georgia, serif; font-size: 38px; font-weight: 500; margin: 0 0 14px; }
+.search-empty p { color: var(--muted); }
+.search-results { margin: 0 auto; max-width: 1200px; }
+
 @media (max-width: 900px) {
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
@@ -297,4 +320,6 @@ a { color: inherit; text-decoration: none; }
   .checkout-page { padding: 55px 20px 75px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .checkout-form legend { font-size: 25px; }
+  .wishlist-page { padding: 55px 20px 75px; }
+  .wishlist-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
 }

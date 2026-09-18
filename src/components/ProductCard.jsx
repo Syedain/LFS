@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useWishlist } from '../features/wishlist/WishlistContext.jsx'
 
 function ProductCard({ product }) {
+  const { isInWishlist, toggleWishlist } = useWishlist()
+  const saved = isInWishlist(product.id)
+
   return (
     <article className="product-card">
       <Link to={`/product/${product.slug}`} className="product-image">
@@ -18,9 +22,17 @@ function ProductCard({ product }) {
         <p className="product-price">${product.price.toFixed(2)}</p>
       </div>
 
-      <button className="wishlist-button" type="button" aria-label={`Add ${product.name} to wishlist`}>
-        ♡
-      </button>
+      <button className={`wishlist-button ${saved ? 'saved' : ''}`}
+  type="button"
+  aria-label={
+    saved
+      ? `Remove ${product.name} from wishlist`
+      : `Add ${product.name} to wishlist`
+  }
+  onClick={() => toggleWishlist(product)}
+>
+  {saved ? '♥' : '♡'}
+</button>
     </article>
   )
 }

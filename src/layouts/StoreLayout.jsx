@@ -37,7 +37,7 @@ function StoreLayout() {
 
       <footer className="site-footer">
         <div>
-          <p className="footer-brand">LFS <em>studio</em></p>
+          <p className="footer-brand">LFS</p>
           <p className="footer-note">Thoughtful essentials for everyday living.</p>
         </div>
         <div className="footer-links">
@@ -46,7 +46,7 @@ function StoreLayout() {
           <Link to="/contact">Contact</Link>
           <Link to="/shipping">Shipping & returns</Link>
         </div>
-        <p className="copyright">© 2026 LFS Studio</p>
+        <p className="copyright">© 2026 LFS</p>
       </footer>
     </div>
   )
