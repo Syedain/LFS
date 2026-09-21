@@ -1,9 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
-import { products } from '../data/products'
+import { fetchProducts } from '../services/products'
 
 function ShopPage() {
+  const [products, setProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadProducts() {
+      setLoading(true)
+      const data = await fetchProducts()
+
+      if (isMounted) {
+        setProducts(data)
+        setLoading(false)
+      }
+    }
+
+    loadProducts()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   const categories = ['All', ...new Set(products.map((product) => product.category))]
 
@@ -11,6 +33,14 @@ function ShopPage() {
     selectedCategory === 'All'
       ? products
       : products.filter((product) => product.category === selectedCategory)
+
+  if (loading) {
+    return (
+      <section className="shop-page">
+        <p className="search-message">Loading products...</p>
+      </section>
+    )
+  }
 
   return (
     <section className="shop-page">
@@ -43,11 +73,15 @@ function ShopPage() {
         </div>
       </div>
 
-      <div className="product-grid shop-product-grid">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {filteredProducts.length === 0 ? (
+        <p className="search-message">No products available right now.</p>
+      ) : (
+        <div className="product-grid shop-product-grid">
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </section>
   )
 }

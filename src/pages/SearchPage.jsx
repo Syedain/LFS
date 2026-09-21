@@ -1,9 +1,31 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import ProductCard from '../components/ProductCard'
-import { products } from '../data/products'
+import { fetchProducts } from '../services/products'
 
 function SearchPage() {
   const [query, setQuery] = useState('')
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadProducts() {
+      setLoading(true)
+      const data = await fetchProducts()
+
+      if (isMounted) {
+        setProducts(data)
+        setLoading(false)
+      }
+    }
+
+    loadProducts()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   const results = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -17,7 +39,7 @@ function SearchPage() {
         .toLowerCase()
         .includes(normalizedQuery),
     )
-  }, [query])
+  }, [query, products])
 
   return (
     <section className="search-page">
@@ -39,20 +61,22 @@ function SearchPage() {
         />
       </div>
 
-      {!query.trim() && (
+      {loading && <p className="search-message">Loading products...</p>}
+
+      {!loading && !query.trim() && (
         <p className="search-message">
           Search by product name or category.
         </p>
       )}
 
-      {query.trim() && results.length === 0 && (
+      {!loading && query.trim() && results.length === 0 && (
         <div className="search-empty">
           <h2>No products found</h2>
           <p>Try another product name or category.</p>
         </div>
       )}
 
-      {results.length > 0 && (
+      {!loading && results.length > 0 && (
         <div className="product-grid search-results">
           {results.map((product) => (
             <ProductCard key={product.id} product={product} />

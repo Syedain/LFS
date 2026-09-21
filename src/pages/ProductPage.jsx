@@ -1,7 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { products } from '../data/products'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCart } from '../features/cart/CartContext.jsx'
+import { fetchProductBySlug } from '../services/products'
 
 function ProductPage() {
   const { slug } = useParams()
@@ -9,8 +9,36 @@ function ProductPage() {
   const { addToCart } = useCart()
 
   const [quantity, setQuantity] = useState(1)
+  const [product, setProduct] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  const product = products.find((item) => item.slug === slug)
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadProduct() {
+      setLoading(true)
+      const foundProduct = await fetchProductBySlug(slug)
+
+      if (isMounted) {
+        setProduct(foundProduct)
+        setLoading(false)
+      }
+    }
+
+    loadProduct()
+
+    return () => {
+      isMounted = false
+    }
+  }, [slug])
+
+  if (loading) {
+    return (
+      <section className="product-page">
+        <p className="search-message">Loading product...</p>
+      </section>
+    )
+  }
 
   if (!product) {
     return <Navigate to="/shop" replace />
@@ -28,7 +56,7 @@ function ProductPage() {
         <h1>{product.name}</h1>
 
         <p className="product-detail-price">
-          ${product.price.toFixed(2)}
+          ${Number(product.price ?? 0).toFixed(2)}
         </p>
 
         <p className="product-description">
@@ -39,19 +67,23 @@ function ProductPage() {
         <div className="product-option">
           <label htmlFor="quantity">Quantity</label>
 
-        <select 
+          <select
             id="quantity"
             value={quantity}
             onChange={(event) => setQuantity(Number(event.target.value))}
-        >
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-        </select>
+          </select>
         </div>
 
-        <button className="add-to-cart-button" type="button" onClick={() => addToCart(product, quantity)} >
-            Add to cart
+        <button
+          className="add-to-cart-button"
+          type="button"
+          onClick={() => addToCart(product, quantity)}
+        >
+          Add to cart
         </button>
 
         <Link className="back-link" to="/shop">
