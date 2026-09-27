@@ -18,10 +18,33 @@ function StoreLayout() {
         </Link>
 
         <nav className="main-nav" aria-label="Main navigation">
-          <Link to="/shop">Shop all</Link>
-          <Link to="/category/men">Men</Link>
-          <Link to="/category/women">Women</Link>
-          <Link to="/category/accessories">Accessories</Link>
+          <div className="nav-menu">
+
+            <div className="nav-dropdown">
+              <Link to="/category/men">Men</Link>
+              <div className="dropdown-menu">
+                <Link to="/category/men/biker">Biker</Link>
+                <Link to="/category/men/blazers">Blazers</Link>
+                <Link to="/category/men/bomber">Bomber</Link>
+                <Link to="/category/men/hooded">Hooded</Link>
+                <Link to="/category/men/vest">Vest</Link>
+              </div>
+            </div>
+
+            <div className="nav-dropdown">
+              <Link to="/category/women">Women</Link>
+              <div className="dropdown-menu">
+                <Link to="/category/women/biker">Biker</Link>
+                <Link to="/category/women/blazers">Blazers</Link>
+                <Link to="/category/women/bomber">Bomber</Link>
+                <Link to="/category/women/hooded">Hooded</Link>
+                <Link to="/category/women/vest">Vest</Link>
+              </div>
+            </div>
+
+            <Link to="/category/new-arrivals">New Arrivals</Link>
+            <Link to="/category/halloween">Halloween</Link>
+          </div>
         </nav>
 
         <div className="header-actions">

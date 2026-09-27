@@ -2,28 +2,28 @@ import { Link } from 'react-router-dom'
 
 const categories = [
   {
-    name: 'Bags',
-    description: 'Designed to carry your everyday',
-    image: '/images/bags.jpg',
-    path: '/category/bags',
+    name: 'Men',
+    description: 'Leather outerwear built for the road',
+    image: '/images/men.jpg',
+    path: '/category/men',
   },
   {
-    name: 'Wallets',
-    description: 'Small essentials, made beautifully',
-    image: '/images/wallets.jpg',
-    path: '/category/wallets',
+    name: 'Women',
+    description: 'Distinctive leather styles for every season',
+    image: '/images/women.jpg',
+    path: '/category/women',
   },
   {
-    name: 'Belts',
-    description: 'The finishing touch',
-    image: '/images/belts.jpg',
-    path: '/category/belts',
+    name: 'New Arrivals',
+    description: 'The latest pieces from LFS',
+    image: '/images/new-arrival.jpg',
+    path: '/category/new-arrivals',
   },
   {
-    name: 'Accessories',
-    description: 'Details that make a difference',
-    image: '/images/accessories.jpg',
-    path: '/category/accessories',
+    name: 'Halloween',
+    description: 'Seasonal leather with attitude',
+    image: '/images/halloween.jpg',
+    path: '/category/halloween',
   },
 ]
 

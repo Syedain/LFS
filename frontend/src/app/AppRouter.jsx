@@ -10,7 +10,7 @@ import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
 import AccountPage from '../pages/AccountPage'
 import WishlistPage from '../pages/WishlistPage'
-import CategorySection from '../components/CategorySection'
+import CategoryPage from '../pages/CategoryPage'
 import SearchPage from '../pages/SearchPage'
 
 function AppRouter() {
@@ -28,8 +28,13 @@ function AppRouter() {
           />
 
           <Route
+            path="/category/:slug/:subcategory"
+            element={<CategoryPage />}
+          />
+
+          <Route
             path="/category/:slug"
-            element={<CategorySection />}
+            element={<CategoryPage />}
           />
 
           <Route
