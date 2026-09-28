@@ -5,7 +5,26 @@ const router = Router()
 
 router.get('/', async (request, response) => {
   try {
+    const { category, subcategory, collection } = request.query
+
+    const where = {}
+
+    if (category) {
+      where.category = category
+    }
+
+    if (subcategory) {
+      where.subcategory = subcategory
+    }
+
+    if (collection) {
+      where.collections = {
+        has: collection,
+      }
+    }
+
     const products = await prisma.product.findMany({
+      where,
       orderBy: {
         createdAt: 'desc',
       },
