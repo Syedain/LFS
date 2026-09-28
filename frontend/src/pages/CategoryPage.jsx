@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
-import { fetchProducts } from '../services/products'
+import { fetchProductsByFilters } from '../services/products'
 
 const categoryNames = {
   men: 'Men',
@@ -27,7 +27,10 @@ function CategoryPage() {
     let isMounted = true
 
     async function loadProducts() {
-      const data = await fetchProducts()
+      const data = await fetchProductsByFilters({
+        category: slug,
+        subcategory,
+      })
 
       if (isMounted) {
         setProducts(data)
@@ -40,32 +43,13 @@ function CategoryPage() {
     return () => {
       isMounted = false
     }
-  }, [])
+  }, [slug, subcategory])
 
   const pageTitle = subcategory
     ? subcategoryNames[subcategory] ?? subcategory
     : categoryNames[slug] ?? slug
 
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const productCategory = product.category?.toLowerCase()
-      const productSubcategory = product.subcategory?.toLowerCase()
-      const productCollections = product.collections ?? []
-
-      if (subcategory) {
-        return (
-          productCategory === slug &&
-          productSubcategory === subcategory
-        )
-      }
-
-      if (slug === 'new-arrivals' || slug === 'halloween') {
-        return productCategory === slug
-      }
-
-      return productCategory === slug
-    })
-  }, [products, slug, subcategory])
+  const filteredProducts = products
 
   return (
     <section className="category-page">

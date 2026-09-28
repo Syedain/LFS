@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
-import { fetchProducts } from '../services/products'
+import { fetchProductsByFilters } from '../services/products'
 
 function ShopPage() {
   const [products, setProducts] = useState([])
@@ -12,7 +12,7 @@ function ShopPage() {
 
     async function loadProducts() {
       setLoading(true)
-      const data = await fetchProducts()
+      const data = await fetchProductsByFilters()
 
       if (isMounted) {
         setProducts(data)

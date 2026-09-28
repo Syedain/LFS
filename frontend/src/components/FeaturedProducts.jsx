@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
-import { fetchProducts } from '../services/products'
+import { fetchProductsByFilters } from '../services/products'
 
 function FeaturedProducts() {
   const [products, setProducts] = useState([])
@@ -12,7 +12,7 @@ function FeaturedProducts() {
 
     async function loadProducts() {
       setLoading(true)
-      const data = await fetchProducts()
+      const data = await fetchProductsByFilters()
 
       if (isMounted) {
         setProducts(data)
