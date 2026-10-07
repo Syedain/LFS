@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { fetchProductsByFilters } from '../services/products'
 
@@ -51,6 +51,20 @@ function CategoryPage() {
 
   const filteredProducts = products
 
+  const subcategories =
+  slug === 'women'
+    ? [
+        { slug: 'biker', label: 'Biker' },
+        { slug: 'bomber', label: 'Bomber' },
+      ]
+    : [
+        { slug: 'biker', label: 'Biker' },
+        { slug: 'blazers', label: 'Blazers' },
+        { slug: 'bomber', label: 'Bomber' },
+        { slug: 'hooded', label: 'Hooded' },
+        { slug: 'vest', label: 'Vest' },
+      ]
+
   return (
     <section className="category-page">
       <div className="category-page-heading">
@@ -73,12 +87,12 @@ function CategoryPage() {
 
       {slug === 'men' || slug === 'women' ? (
         <nav className="subcategory-nav" aria-label={`${pageTitle} categories`}>
-          <Link to={`/category/${slug}`}>All</Link>
-          <Link to={`/category/${slug}/biker`}>Biker</Link>
-          <Link to={`/category/${slug}/blazers`}>Blazers</Link>
-          <Link to={`/category/${slug}/bomber`}>Bomber</Link>
-          <Link to={`/category/${slug}/hooded`}>Hooded</Link>
-          <Link to={`/category/${slug}/vest`}>Vest</Link>
+          <NavLink to={`/category/${slug}`}end>All</NavLink>
+          {subcategories.map((item) => (
+            <NavLink key={item.slug} to={`/category/${slug}/${item.slug}`} >
+              {item.label}
+            </NavLink>
+          ))}
         </nav>
       ) : null}
 

@@ -8,6 +8,7 @@ function FeaturedProducts() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+
     let isMounted = true
 
     async function loadProducts() {
@@ -27,6 +28,11 @@ function FeaturedProducts() {
     }
   }, [])
 
+  const featuredCategories = ['men', 'women', 'halloween', 'new-arrivals']
+    const featuredProducts = featuredCategories
+      .map((category) => products.find((product) => product.category === category))
+      .filter(Boolean)
+
   return (
     <section className="featured-products">
       <div className="section-heading">
@@ -44,7 +50,7 @@ function FeaturedProducts() {
         <p className="search-message">Loading featured products...</p>
       ) : (
         <div className="product-grid">
-          {products.map((product) => (
+          {featuredProducts.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

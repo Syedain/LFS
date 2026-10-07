@@ -35,13 +35,11 @@ function StoreLayout() {
               <Link to="/category/women">Women</Link>
               <div className="dropdown-menu">
                 <Link to="/category/women/biker">Biker</Link>
-                <Link to="/category/women/blazers">Blazers</Link>
                 <Link to="/category/women/bomber">Bomber</Link>
-                <Link to="/category/women/hooded">Hooded</Link>
-                <Link to="/category/women/vest">Vest</Link>
               </div>
             </div>
 
+            <Link to="/shop">Shop</Link>
             <Link to="/category/new-arrivals">New Arrivals</Link>
             <Link to="/category/halloween">Halloween</Link>
           </div>
